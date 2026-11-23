@@ -1,0 +1,14 @@
+{
+  "name": "wideguard-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "㈜와이드가드 공식 홈페이지 — 정적 사이트 + 상담 접수/문자 알림 Vercel 서버리스 함수",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "start": "python3 -m http.server 8000",
+    "test": "node --test test/"
+  }
+}
