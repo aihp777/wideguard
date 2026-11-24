@@ -1441,3 +1441,88 @@ button { font: inherit; color: inherit; }
 @media (max-width: 720px) {
   .faq__item summary { padding-right: 34px; }
 }
+
+/* =========================================================
+   Instagram shortcut — 연락처 옆 @wideguard.security
+   ========================================================= */
+.contact__touch {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  margin-top: 30px;
+}
+.contact__touch .contact__tel { margin-top: 0; }
+
+.ig-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+  max-width: 100%;
+  padding: 8px 14px 8px 11px;
+  border: 1px solid rgba(200, 169, 97, 0.42);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.045);
+  color: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.25s, background 0.25s;
+}
+.ig-badge svg {
+  width: 21px;
+  height: 21px;
+  flex: none;
+  fill: none;
+  stroke: var(--gold-l);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.ig-badge__t { display: block; line-height: 1.25; }
+.ig-badge__t em {
+  display: block;
+  color: var(--gold-l);
+  font-size: 9.5px;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+.ig-badge__t b {
+  display: block;
+  margin-top: 1px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  transition: color 0.25s;
+}
+.ig-badge:hover {
+  border-color: var(--gold);
+  background: rgba(200, 169, 97, 0.14);
+}
+.ig-badge:hover .ig-badge__t b { color: var(--gold-l); }
+
+/* 푸터 안내 */
+.ft__ig {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.ft__ig svg {
+  width: 13px;
+  height: 13px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.85;
+}
+
+@media (max-width: 480px) {
+  .contact__touch { gap: 12px; margin-top: 24px; }
+  .ig-badge { padding: 7px 12px 7px 10px; gap: 8px; }
+  .ig-badge svg { width: 19px; height: 19px; }
+  .ig-badge__t b { font-size: 12.5px; }
+}
