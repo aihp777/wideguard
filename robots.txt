@@ -3,3 +3,5 @@ Allow: /
 
 # 상담 접수 API는 검색 대상이 아닙니다.
 Disallow: /api/
+
+Sitemap: https://www.wideguard.co.kr/sitemap.xml
