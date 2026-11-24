@@ -10,8 +10,8 @@
 
 ```
 wideguard-site/
-├── index.html                 홈페이지 (히어로 → 지표 → 회사소개 → 6대 사업영역 → 핵심역량/프로세스 → 현장기록 → FAQ → 상담/문의 → 푸터)
-├── styles.css                 홈페이지 스타일
+├── index.html                 홈페이지 (히어로 → 지표 → 회사소개 → 6대 사업영역·법령 안내 → 주요실적(탭) → 현장기록 → 핵심역량/프로세스 → FAQ → 상담/문의 → 푸터)
+├── styles.css                 홈페이지 스타일 (화이트·라이트 그레이 + 네이비·골드 포인트)
 ├── app.js                     헤더 스크롤 · 모바일 메뉴 · 카운트업 · 상담 폼(접수 → 알림 문자)
 ├── consult.html               간편상담 전용 페이지 (인스타·스레드 프로필 링크용 /consult)
 ├── consult.js                 간편상담 폼 (업무 분야 칩 · 연락처 · 지역/현장 · 내용 → /api/inquiry)
@@ -28,7 +28,7 @@ wideguard-site/
 │   └── inquiry.test.js        검증·발송 로직 테스트 (node --test)
 └── assets/
     ├── fonts/                 Pretendard 가변폰트 (서브셋)
-    └── images/                로고 · 현장 사진 · 파비콘
+    └── images/                로고 · 현장 사진 · 파비콘 · portfolio/(회사소개서 실적 사진)
 ```
 
 ## 미리보기 (로컬)
