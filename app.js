@@ -248,6 +248,47 @@
     });
   }
 
+  /* ---------- 실적 탭 (주요실적 섹션) ---------- */
+  var tablist = document.querySelector(".tabs");
+  if (tablist) {
+    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('[role="tab"]'));
+    var panels = tabs.map(function (t) {
+      return document.getElementById(t.getAttribute("aria-controls"));
+    });
+
+    var selectTab = function (idx, moveFocus) {
+      tabs.forEach(function (t, i) {
+        var on = i === idx;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        if (panels[i]) panels[i].hidden = !on;
+      });
+      if (moveFocus && tabs[idx]) tabs[idx].focus();
+    };
+
+    var startIdx = 0;
+    tabs.forEach(function (t, i) {
+      if (t.getAttribute("aria-selected") === "true") startIdx = i;
+    });
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener("click", function () { selectTab(i); });
+      t.addEventListener("keydown", function (e) {
+        var next = null;
+        if (e.key === "ArrowRight") next = (i + 1) % tabs.length;
+        else if (e.key === "ArrowLeft") next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === "Home") next = 0;
+        else if (e.key === "End") next = tabs.length - 1;
+        if (next !== null) {
+          e.preventDefault();
+          selectTab(next, true);
+        }
+      });
+    });
+
+    selectTab(startIdx);
+  }
+
   /* ---------- footer year ---------- */
   var y = document.getElementById("year");
   if (y) y.textContent = String(new Date().getFullYear());
