@@ -1,6 +1,9 @@
 {
   "cleanUrls": false,
   "trailingSlash": false,
+  "rewrites": [
+    { "source": "/consult", "destination": "/consult.html" }
+  ],
   "functions": {
     "api/inquiry.js": { "maxDuration": 10 }
   },

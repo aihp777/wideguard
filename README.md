@@ -13,6 +13,8 @@ wideguard-site/
 ├── index.html                 홈페이지 (히어로 → 지표 → 회사소개 → 6대 사업영역 → 핵심역량/프로세스 → 현장기록 → FAQ → 상담/문의 → 푸터)
 ├── styles.css                 홈페이지 스타일
 ├── app.js                     헤더 스크롤 · 모바일 메뉴 · 카운트업 · 상담 폼(접수 → 알림 문자)
+├── consult.html               간편상담 전용 페이지 (인스타·스레드 프로필 링크용 /consult)
+├── consult.js                 간편상담 폼 (업무 분야 칩 · 연락처 · 지역/현장 · 내용 → /api/inquiry)
 ├── privacy.html               개인정보처리방침 (초안)
 ├── terms.html                 홈페이지 이용약관 (초안)
 ├── 404.html                   없는 주소 안내
@@ -45,6 +47,21 @@ API까지 함께 확인하려면 Vercel CLI로 실행하세요.
 npm i -g vercel
 vercel dev      # http://localhost:3000  (함수 포함)
 ```
+
+## 간편상담 페이지 — `/consult`
+
+인스타·스레드 릴스를 보고 모바일로 들어오는 고객이 **30초 안에 문의**할 수 있도록 만든 단문 페이지입니다.
+`vercel.json`의 rewrite(`/consult` → `/consult.html`)로 열리며, `/consult.html`도 함께 동작합니다.
+
+- 상단: 공식 로고 + `경기도남부경찰청 허가 제2442호 정식 경비법인` 배지
+- CTA 2개: `📞 24시간 바로 전화 031-954-2001` · `🌐 공식 홈페이지 전체 보기`
+- 간편상담 폼: 업무 분야(칩) · 성함(선택) · 연락처 · 지역/현장 · 간단한 내용 → `POST /api/inquiry`
+  (지역/현장은 본문 앞에 `[지역/현장] …`으로 붙여 담당자 문자에 함께 전달)
+- 접수 실패 시 홈페이지와 동일하게 **두 담당자 메일(mailto) + 전화** 대체 버튼
+- 모바일 하단에 전화 고정 바
+
+미리보기: `python3 -m http.server 8000` → `http://localhost:8000/consult.html`
+(로컬에는 `/consult` rewrite가 없으므로 `.html`로 확인)
 
 ## 상담 알림 문자 활성화 (Vercel 설정)
 
