@@ -352,7 +352,7 @@ async function handler(req, res) {
   if (!allowRequest(ip)) {
     send(res, 429, {
       ok: false,
-      message: "짧은 시간에 여러 번 접수되었습니다. 잠시 후 다시 시도하시거나 전화(031-954-2001)로 문의해 주세요.",
+      message: "짧은 시간에 여러 번 접수되었습니다. 잠시 후 다시 시도하시거나 전화(031-945-2001)로 문의해 주세요.",
     });
     return;
   }
@@ -396,7 +396,7 @@ async function handler(req, res) {
       ok: false,
       id,
       message:
-        "알림 문자 발송에 실패해 상담 요청이 담당자에게 전달되지 않았습니다. 번거롭지만 전화(031-954-2001)나 이메일(dbeh1@naver.com)로 문의해 주세요.",
+        "알림 문자 발송에 실패해 상담 요청이 담당자에게 전달되지 않았습니다. 번거롭지만 전화(031-945-2001)나 이메일(dbeh1@naver.com)로 문의해 주세요.",
     });
     return;
   }
@@ -408,7 +408,7 @@ async function handler(req, res) {
       ok: false,
       id,
       message:
-        "알림 문자 발송에 실패해 상담 요청이 담당자에게 전달되지 않았습니다. 번거롭지만 전화(031-954-2001)나 이메일(dbeh1@naver.com)로 문의해 주세요.",
+        "알림 문자 발송에 실패해 상담 요청이 담당자에게 전달되지 않았습니다. 번거롭지만 전화(031-945-2001)나 이메일(dbeh1@naver.com)로 문의해 주세요.",
     });
     return;
   }

@@ -134,7 +134,7 @@ test("솔라피: 두 담당자 번호로 HMAC 인증 발송", async () => {
     SMS_PROVIDER: "solapi",
     SOLAPI_API_KEY: "TESTKEY",
     SOLAPI_API_SECRET: "TESTSECRET",
-    SOLAPI_SENDER: "031-954-2001",
+    SOLAPI_SENDER: "031-945-2001",
   });
   const fetchMock = okFetch({ messageList: [{ statusCode: "2000" }, { statusCode: "2000" }] });
   global.fetch = fetchMock;
@@ -158,7 +158,7 @@ test("솔라피: 두 담당자 번호로 HMAC 인증 발송", async () => {
     sent.messages.map((m) => m.to).sort(),
     ["01088585559", "01093287814"]
   );
-  assert.ok(sent.messages.every((m) => m.from === "0319542001"));
+  assert.ok(sent.messages.every((m) => m.from === "0319452001"));
   assert.ok(sent.messages[0].text.includes("홍길동"));
   assert.ok(sent.messages[0].text.includes("시설경비"));
   assert.ok(sent.messages[0].text.includes("010-1234-5678"));
@@ -169,7 +169,7 @@ test("솔라피: 일부만 접수되면 partial", async () => {
     SMS_PROVIDER: "solapi",
     SOLAPI_API_KEY: "TESTKEY",
     SOLAPI_API_SECRET: "TESTSECRET",
-    SOLAPI_SENDER: "0319542001",
+    SOLAPI_SENDER: "0319452001",
   });
   global.fetch = okFetch({ messageList: [{ statusCode: "2000" }, { statusCode: "1030" }] });
 
@@ -186,7 +186,7 @@ test("알리고: 수신번호를 콤마로 묶어 발송", async () => {
     SMS_PROVIDER: "aligo",
     ALIGO_API_KEY: "ALIGOKEY",
     ALIGO_USER_ID: "wideguard",
-    ALIGO_SENDER: "0319542001",
+    ALIGO_SENDER: "0319452001",
   });
   const fetchMock = okFetch({ result_code: "1", message: "성공적으로 전송되었습니다.", success_cnt: 2 });
   global.fetch = fetchMock;
@@ -203,7 +203,7 @@ test("알리고: 수신번호를 콤마로 묶어 발송", async () => {
   const form = new URLSearchParams(init.body);
   assert.strictEqual(form.get("key"), "ALIGOKEY");
   assert.strictEqual(form.get("user_id"), "wideguard");
-  assert.strictEqual(form.get("sender"), "0319542001");
+  assert.strictEqual(form.get("sender"), "0319452001");
   assert.strictEqual(form.get("receiver"), "01088585559,01093287814");
   assert.strictEqual(form.get("msg_type"), "LMS");
   assert.ok(form.get("msg").includes("[와이드가드]"));
@@ -237,7 +237,7 @@ test("발송 실패는 502 와 안내 문구로 응답한다", async () => {
     SMS_PROVIDER: "solapi",
     SOLAPI_API_KEY: "TESTKEY",
     SOLAPI_API_SECRET: "TESTSECRET",
-    SOLAPI_SENDER: "0319542001",
+    SOLAPI_SENDER: "0319452001",
   });
   global.fetch = async () => ({ ok: false, status: 400, text: async () => '{"errorCode":"InvalidKey"}' });
 
@@ -245,7 +245,7 @@ test("발송 실패는 502 와 안내 문구로 응답한다", async () => {
   await handler(req(VALID), res);
   assert.strictEqual(res.statusCode, 502);
   assert.strictEqual(res.body.ok, false);
-  assert.ok(res.body.message.includes("031-954-2001"));
+  assert.ok(res.body.message.includes("031-945-2001"));
 });
 
 test("검증 실패는 400 과 첫 오류 문구", async () => {
@@ -287,7 +287,7 @@ test("NOTIFY_PHONES 로 받는 번호를 바꿀 수 있다", async () => {
     SMS_PROVIDER: "solapi",
     SOLAPI_API_KEY: "TESTKEY",
     SOLAPI_API_SECRET: "TESTSECRET",
-    SOLAPI_SENDER: "0319542001",
+    SOLAPI_SENDER: "0319452001",
     NOTIFY_PHONES: "010-0000-1111, 010-2222-3333",
   });
   const fetchMock = okFetch({ messageList: [{ statusCode: "2000" }, { statusCode: "2000" }] });

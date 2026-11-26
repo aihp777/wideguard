@@ -54,7 +54,7 @@ vercel dev      # http://localhost:3000  (함수 포함)
 `vercel.json`의 rewrite(`/consult` → `/consult.html`)로 열리며, `/consult.html`도 함께 동작합니다.
 
 - 상단: 공식 로고 + `경기도남부경찰청 허가 제2442호 정식 경비법인` 배지
-- CTA 2개: `📞 24시간 바로 전화 031-954-2001` · `🌐 공식 홈페이지 전체 보기`
+- CTA 2개: `📞 24시간 바로 전화 031-945-2001` · `🌐 공식 홈페이지 전체 보기`
 - 간편상담 폼: 업무 분야(칩) · 성함(선택) · 연락처 · 지역/현장 · 간단한 내용 → `POST /api/inquiry`
   (지역/현장은 본문 앞에 `[지역/현장] …`으로 붙여 담당자 문자에 함께 전달)
 - 접수 실패 시 홈페이지와 동일하게 **두 담당자 메일(mailto) + 전화** 대체 버튼
@@ -78,7 +78,7 @@ vercel dev      # http://localhost:3000  (함수 포함)
 ### (A) 솔라피 Solapi — `SMS_PROVIDER=solapi`
 
 1. https://solapi.com 가입 → **API Key / API Secret** 발급 (콘솔 → 개발 → API Key)
-2. **발신번호 사전등록**: 콘솔 → 발신번호 관리에서 회사 대표전화(`031-954-2001`) 등록 후 통신사 승인 확인
+2. **발신번호 사전등록**: 콘솔 → 발신번호 관리에서 회사 대표전화(`031-945-2001`) 등록 후 통신사 승인 확인
    (사전등록·승인되지 않은 번호로는 발송되지 않습니다)
 3. 환경변수 입력
 
@@ -86,7 +86,7 @@ vercel dev      # http://localhost:3000  (함수 포함)
 |---|---|
 | `SOLAPI_API_KEY` | API Key |
 | `SOLAPI_API_SECRET` | API Secret |
-| `SOLAPI_SENDER` | 사전등록된 발신번호 (예: `0319542001`) |
+| `SOLAPI_SENDER` | 사전등록된 발신번호 (예: `0319452001`) |
 
 발송 방식: `POST https://api.solapi.com/messages/v4/send-many/detail`
 헤더 `Authorization: HMAC-SHA256 apiKey=…, date=…, salt=…, signature=…` (signature = HMAC-SHA256(secret, date+salt))
@@ -164,7 +164,7 @@ npm test        # node --test test/  (Node 18 이상)
 ## 운영 전에 해야 할 일
 
 1. **도메인 연결**: Vercel → Settings → Domains 에서 도메인 추가 후, `index.html`의 `og:image`·`og:url` 주석을 풀고 실제 주소 입력
-2. **문자 발신번호 사전등록**: 솔라피 또는 알리고에서 `031-954-2001` 승인 완료 여부 확인 (미승인 시 발송 실패)
+2. **문자 발신번호 사전등록**: 솔라피 또는 알리고에서 `031-945-2001` 승인 완료 여부 확인 (미승인 시 발송 실패)
 3. **Vercel 환경변수 등록 후 재배포**, 실제 상담 1건으로 두 번호 수신 확인
 4. **문서 검토**: `privacy.html`, `terms.html`은 초안입니다. 법률 검토 후 시행일 확정 (문자 발송 위탁사 상호 확정 후 개인정보처리방침 4항 보완)
 5. **검색 등록**: 네이버 서치어드바이저·구글 서치콘솔에 사이트맵/도메인 등록 (당근 비즈프로필·네이버 플레이스와 함께 진행)
